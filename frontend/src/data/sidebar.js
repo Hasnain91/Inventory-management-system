@@ -22,10 +22,11 @@ const menu = [
       },
       {
         title: "Edit Profile",
-        path: "/profile-update",
+        path: "/edit-profile",
       },
     ],
   },
+
   {
     title: "Report Bug",
     icon: <FaCommentAlt />,

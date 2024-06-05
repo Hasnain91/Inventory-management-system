@@ -1,6 +1,15 @@
 .card {
+  // border: 1px solid transparent;
+  // border-radius: 5px;
+  // box-shadow: var(--box-shadow);
+  // overflow: hidden;
+
   border: 1px solid transparent;
-  border-radius: 5px;
-  box-shadow: var(--box-shadow);
+  // border-radius: 5px;
+  border-radius: 30px;
+  // box-shadow: var(--box-shadow);
+  background: lightgrey; //to remove later
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 50px -12px inset,
+    rgba(0, 0, 0, 0.3) 0px 18px 26px -18px inset;
   overflow: hidden;
 }
