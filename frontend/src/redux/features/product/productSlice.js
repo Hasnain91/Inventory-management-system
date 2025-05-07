@@ -178,7 +178,7 @@ const productSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.isError = false;
-        console.log(action.payload);
+        // console.log(action.payload);
         state.products = action.payload;
       })
       .addCase(getProducts.rejected, (state, action) => {
@@ -224,7 +224,15 @@ const productSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.isError = false;
+        // toast.success("Product Updated Successfully.");
+        // console.log(action.payload);
+        state.products = state.products.map((product) =>
+          product._id === action.payload._id ? action.payload : product
+        );
         toast.success("Product Updated Successfully.");
+        if (action.payload.lowQuantity) {
+          toast.warn("Warning: Product quantity is running low!");
+        }
       })
       .addCase(updateProduct.rejected, (state, action) => {
         state.isLoading = false;

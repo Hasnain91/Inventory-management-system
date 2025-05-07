@@ -76,6 +76,15 @@ const ProductForm = ({
               onChange={handleInputChange}
             />
 
+            <label>Product Expiry Date:</label>
+            <input
+              type="date"
+              placeholder="Expiry Date"
+              name="expiryDate"
+              value={product?.expiryDate}
+              onChange={handleInputChange}
+            />
+
             <label>Product Description:</label>
             <ReactQuill
               theme="snow"

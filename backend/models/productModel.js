@@ -42,6 +42,10 @@ const productSchema = mongoose.Schema(
       type: Object,
       default: {},
     },
+    expiryDate: {
+      type: Date,
+      required: [true, "Please add an expiry date"],
+    },
   },
   {
     timestamps: true,

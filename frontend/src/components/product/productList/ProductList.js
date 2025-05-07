@@ -3,8 +3,8 @@ import "./productList.scss";
 import { SpinnerImg } from "../../loader/Loader";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import { AiOutlineEye } from "react-icons/ai";
-import { IoIosAddCircle } from "react-icons/io";
-import { FaCircleMinus } from "react-icons/fa6";
+// import { IoIosAddCircle } from "react-icons/io";
+// import { FaCircleMinus } from "react-icons/fa6";
 import Search from "../../search/Search";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -120,7 +120,17 @@ const ProductList = ({ products, isLoading }) => {
                   let { quantity } = product;
 
                   return (
-                    <tr key={_id}>
+                    <tr
+                      key={_id}
+                      style={{
+                        border:
+                          product.quantity < 5
+                            ? "3px solid red"
+                            : "0px solid black",
+                        padding: "10px",
+                        margin: "10px",
+                      }}
+                    >
                       <td> {index + 1}</td>
                       <td> {shortenText(name, 15)}</td>
                       <td> {category}</td>

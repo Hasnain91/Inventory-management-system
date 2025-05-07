@@ -5,10 +5,18 @@ const cloudinary = require("cloudinary").v2;
 
 // Craete Product Function
 const createProduct = asyncHandler(async (req, res) => {
-  const { name, sku, category, quantity, price, description } = req.body;
+  const { name, sku, category, quantity, price, description, expiryDate } =
+    req.body;
 
   // Validation
-  if (!name || !category || !quantity || !price || !description) {
+  if (
+    !name ||
+    !category ||
+    !quantity ||
+    !price ||
+    !description ||
+    !expiryDate
+  ) {
     res.status(400);
     throw new Error("Please fill in all fields.");
   }
@@ -47,6 +55,7 @@ const createProduct = asyncHandler(async (req, res) => {
     price,
     description,
     image: fileData,
+    expiryDate,
   });
   res.status(201).json(product);
 });
@@ -96,7 +105,7 @@ const deleteProduct = asyncHandler(async (req, res) => {
 
 // Update Product
 const updateProduct = asyncHandler(async (req, res) => {
-  const { name, category, quantity, price, description } = req.body;
+  const { name, category, quantity, price, description, expiryDate } = req.body;
   const { id } = req.params;
 
   const product = await Product.findById(id);
@@ -145,12 +154,17 @@ const updateProduct = asyncHandler(async (req, res) => {
       price,
       description,
       image: Object.keys(fileData).length === 0 ? product?.image : fileData,
+      expiryDate,
     },
     {
       new: true,
       runValidators: true,
     }
   );
+  // Check if the product quantity is below 5
+  if (updatedProduct.quantity < 5) {
+    return res.status(200).json({ updatedProduct, lowQuantity: true });
+  }
 
   res.status(200).json(updatedProduct);
 });

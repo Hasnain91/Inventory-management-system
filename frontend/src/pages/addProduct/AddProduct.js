@@ -14,6 +14,7 @@ const initialState = {
   category: "",
   quantity: "",
   price: "",
+  expiryDate: "",
 };
 
 const AddProduct = () => {
@@ -26,7 +27,8 @@ const AddProduct = () => {
 
   const isLoading = useSelector(selectIsLoading);
 
-  const { name, category, price, quantity } = product;
+  // const { name, category, price, quantity } = product;
+  const { name, category, price, quantity, expiryDate } = product;
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -55,6 +57,7 @@ const AddProduct = () => {
     formData.append("price", price);
     formData.append("description", description);
     formData.append("image", productImage);
+    formData.append("expiryDate", expiryDate);
 
     console.log(...formData);
 

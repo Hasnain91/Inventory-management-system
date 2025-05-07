@@ -79,6 +79,10 @@ const ProductDetail = () => {
               <b>&rarr; Total Value in Store: </b> {"Rs. "}
               {product.price * product.quantity}
             </p>
+            <p>
+              <b>&rarr; Expiry Date: </b>{" "}
+              {new Date(product.expiryDate).toLocaleDateString("en-US")}
+            </p>
             <hr />
             <div
               dangerouslySetInnerHTML={{
